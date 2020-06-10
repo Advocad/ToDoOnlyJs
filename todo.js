@@ -1,6 +1,8 @@
 function onPageLoaded() {
   const input = document.querySelector("input[type='text']");
   const ul = document.querySelector("ul.todos");
+  const saveButton = document.querySelector("button.save");
+  const clearButton = document.querySelector("button.clear");
 
 
   createTodo = () => {
@@ -21,6 +23,15 @@ function onPageLoaded() {
       listenDeleteTodo(deleteBtn);
   }
 
+  saveButton.addEventListener("click", () => {
+    localStorage.setItem("todos", ul.innerHTML);
+  });
+
+  clearButton.addEventListener("click", () => {
+    ul.innerHTML = "";
+    localStorage.removeItem('todos', ul.innerHTML);
+  });
+
   listenDeleteTodo = (element) => {
     element.addEventListener("click", (event) => {
         element.parentElement.remove();
@@ -28,7 +39,18 @@ function onPageLoaded() {
     });
   }
 
-  function onClickTodo(event) {
+  loadTodos = () => {
+    const data = localStorage.getItem("todos");
+    if (data) {
+        ul.innerHTML = data;
+    }
+    const deleteButtons = document.querySelectorAll("span.todo-trash");
+    for (const button of deleteButtons) {
+        listenDeleteTodo(button);
+    }
+  }
+
+  onClickTodo = (event) => {
     if (event.target.tagName === "LI") {
         event.target.classList.toggle("checked");
     }
@@ -40,6 +62,7 @@ function onPageLoaded() {
           createTodo();
       }
   });
+  loadTodos()
   ul.addEventListener("click", onClickTodo);
 }
 

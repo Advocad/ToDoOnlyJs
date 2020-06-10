@@ -1,0 +1,57 @@
+#todo {
+  margin: 0 auto;
+  max-width: 400px;
+  text-align: center;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 7px 0;
+  border: 0;
+  border-bottom: 1px solid;
+  font-size: 18px;
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+ul.todos {
+  padding-left: 0;
+  width: 100%;
+  margin-top: 25px;
+}
+
+li {
+  list-style-type: none;
+  text-align: left;
+  line-height: 36px;
+  font-size: 21px;
+  background: #eee;
+  padding: 10px;
+  box-shadow: 2px 1px 3px 0px #ccc;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+li.checked {
+  text-decoration: line-through;
+}
+
+li .todo-trash { 
+  cursor: pointer;
+}
+
+#buttons {
+  margin-top: 45px;
+}
+
+#buttons button {
+  font-size: 16px;
+  border: 0;
+  padding: 7px 15px;
+  border-radius: 10px;
+  margin: 0 20px;
+}
